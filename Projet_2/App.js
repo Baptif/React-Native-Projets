@@ -4,19 +4,19 @@ import * as Location from 'expo-location';
 import CurrentMeteo from './components/CurrentMeteo';
 import { GluestackUIProvider, Box } from "@gluestack-ui/themed"
 import FiveDaysMeteo from './components/FiveDaysMeteo';
-import { config } from "@gluestack-ui/config"
+import { config } from "@gluestack-ui/config";
+import {API_KEY} from '@env';
 
 export default function App() {
   const [currentWeatherData, setCurrentWeatherData] = useState(null);
   const [weatherData5Days, setWeatherData5Days] = useState(null);
+  const apiUrl = "https://api.openweathermap.org/data/2.5/forecast";
   
   useEffect(() => {
     const fetchData = async (latitude, longitude) => { 
       try {
-        const url = `https://api.openweathermap.org/data/2.5/forecast?lang=fr&units=metric&lat=${latitude}&lon=${longitude}&appid=0482b92e01c78f8a6262ce979b4f34a2`;
-        console.log(url);
         const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?lang=fr&units=metric&lat=${latitude}&lon=${longitude}&appid=0482b92e01c78f8a6262ce979b4f34a2`
+          `${apiUrl}?lang=fr&units=metric&lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
         );
         const data = await response.json();
         setCurrentWeatherData(data);
