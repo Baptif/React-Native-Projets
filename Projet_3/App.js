@@ -1,44 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
-import { FlatList, View, Text, Image } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet } from 'react-native';
+import Home from './components/Home';
+import Favs from './components/Favs';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [coktailsData, setCoktailsData] = useState(null);
-  const apiUrl = "https://www.thecocktaildb.com/api/json/v1/1";
-
-  useEffect(() => {
-    const fetchData = async () => { 
-      try {
-        const response = await fetch(
-          `${apiUrl}/search.php?f=a`
-        );
-        const data = await response.json();
-        setCoktailsData(data);
-      } catch (error) {
-        alert('Error fetching coktails data:', error);
-      }
-    };     
-
-    fetchData();
-  }, []);
 
   return (
-    <View>
-      {coktailsData ? (
-        <FlatList
-          data={coktailsData.drinks}
-          renderItem={({ item }) => 
-            <View>
-              <Text>{item.strDrink}</Text>
-              <Image source={{ uri: item.strDrinkThumb }} style={{ width: 50, height: 50 }} />
-            </View>
-          }
-          keyExtractor={item => item.idDrink}
-        />
-      ) : (
-        <Text>Loading...</Text>
-      )}
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider style={styles.container}>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={Home} options={{ title: '🍸 Coktails List 🍸' }} />
+          <Tab.Screen name="Favs" component={Favs}/>
+        </Tab.Navigator>
+        <StatusBar style="auto" />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  heading: {
+    color: 'white',
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+});
