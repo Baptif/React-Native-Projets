@@ -10,7 +10,13 @@ const Home = () => {
             <Stack.Screen
                 name="CoktailsList"
                 component={CoktailsList}
-                options={{ title: 'Coktails List' }}
+                options={{
+                    title: '🍹Coktails List🍹',
+                    headerTintColor: 'orange',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                    },
+                }}
             />
             <Stack.Screen
                 name="CoktailsDetails"

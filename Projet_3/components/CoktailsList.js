@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import CoktailItem from './CoktailItem';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const CoktailsList = () => {
     const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
@@ -66,7 +67,8 @@ const CoktailsList = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginBottom: 10,
+      paddingBottom: 10,
+      backgroundColor: 'lightblue',
     },
     spinner: {
         justifyContent: 'center',

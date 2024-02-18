@@ -18,7 +18,7 @@ const CurrentMeteo = ({weatherData}) => {
                     </Box>
                 </Box>
             ) : ( 
-                <Spinner size="large" color="white"/>
+                <Spinner style={{marginTop:50}} size="large" color="white"/>
             )}
         </Box>
     );

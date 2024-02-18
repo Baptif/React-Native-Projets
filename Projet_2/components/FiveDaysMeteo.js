@@ -28,7 +28,7 @@ const FiveDaysMeteo = ({weatherData}) => {
                )}
             />
          ) : (
-            <Spinner mt="$2" size="large" />
+            <Spinner mt="$2" size="large" color="white"/>
          )}
       </Box>
    );

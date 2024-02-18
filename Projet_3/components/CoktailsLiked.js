@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { getLikedCocktails, clearLikedCocktails } from '../utils/likeCoktailFuncs';
 import LikeButton from './LikeButton';
@@ -20,14 +20,18 @@ const CoktailsLiked = () => {
   }, [isFocused]);
 
   return (
-    <View>
+    <View style={styles.container}>
       {likedCoktails.length != 0 ? (
-        likedCoktails.map((cocktail) => (
-          <View key={cocktail.id} style={styles.containerLiked}>
-            <Text style={{paddingLeft:10}}>{cocktail.name}</Text>
-            <LikeButton cocktail={{id: cocktail.id, name: cocktail.name}}/>
-          </View> 
-        ))
+        <FlatList
+          data={likedCoktails}
+          renderItem={({ item }) => 
+            <View key={item.id} style={styles.containerLiked}>
+              <Text style={{paddingLeft:10}}>{item.name}</Text>
+              <LikeButton cocktail={{id: item.id, name: item.name}}/>
+            </View>
+          }
+          keyExtractor={item => item.id}
+        />
       ) : (
         <Text style={styles.noLikeText}>No liked coktails for the moment</Text>
       )}
@@ -36,6 +40,11 @@ const CoktailsLiked = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'lightblue',
+    paddingBottom: 10,
+  },
   containerLiked: {
     flexDirection: 'row',
     backgroundColor: 'white',
