@@ -1,9 +1,9 @@
 # 🚀 Projets React Native avec Expo 🚀
 
 Ce repo contient trois projets React Native développés avec Expo.
-- PROJET_1 : Application de gestion de tâches
-- PROJET_2 : Application de prévision météo
-- PROJET_3 : Application de liste de cocktails avec gestion des favoris
+- ✅ PROJET_1 : Application de gestion de tâches
+- 🌤️ PROJET_2 : Application de prévision météo
+- 🍹 PROJET_3 : Application de liste de cocktails avec gestion des favoris
 
 ## Prérequis
 
