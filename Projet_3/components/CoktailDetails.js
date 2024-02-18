@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, SafeAreaView, ScrollView } from 'react-native';
 
 const CocktailDetails = ({ route }) => {
 
@@ -22,9 +22,9 @@ const CocktailDetails = ({ route }) => {
     }, []);
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView  style={styles.container}>
             {cocktail ? (
-                <View>
+                <ScrollView >
                     <Text style={styles.title}>{cocktail.strDrink}</Text>
                     <Text style={styles.text}>{cocktail.strAlcoholic}</Text>
                     <Text style={styles.text}>{cocktail.strGlass}</Text>
@@ -36,11 +36,11 @@ const CocktailDetails = ({ route }) => {
                         }
                         return null;
                     })} 
-                </View>
+                </ScrollView>
             ) : (
                 <ActivityIndicator size="large" style={styles.spinner}/>
             )}
-        </View>
+        </SafeAreaView>
     );
 };
 
