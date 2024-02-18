@@ -15,22 +15,27 @@ Avant de commencer, assurez-vous d'avoir installé Node.js et Expo CLI sur votre
 ## Instructions pour lancer les projets
 
 1. **Cloner le repo**
-2. **Accéder au répertoire d'un des projets**
-3. **Installer les dépendances :**
-  
+
+    ```bash
+      git clone https://github.com/Baptif/React-Native-Projets.git
     ```
-    npm i
+2. **Accéder au répertoire d'un des projets**
+
+    ```bash
+      cd Projet_1/2/3
+    ```
+3. **Installer les dépendances :**
+    ```bash
+      npm install
     ```
 4. **Lancer l'application :**
   
 Sur le même réseau
-    ```
+
     npm run start
-    ```
   
 Sur des réseaux différents
-    ```
+
     npm run start-t
-    ```
 
 > Just start 🔥
